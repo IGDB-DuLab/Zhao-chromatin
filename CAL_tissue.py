@@ -16,52 +16,38 @@ from itertools import combinations
 from scipy.stats import mannwhitneyu
 from scipy.spatial.distance import pdist, squareform
 
-# transforming cell lineage name
+### transforming cell lineage name
 def except_cell(cell_name):
     
     transform_name = None
-    
     if cell_name[0] == 'L':
-        
         len_cell_name = len(cell_name)
-        
         for i in range(1,len_cell_name+1):
-            
             if cell_name[:-i] in list(relpace_name_to_cell_name_sheet.index.values):
-                
                 transform_name = (relpace_name_to_cell_name_sheet.loc[[cell_name[:-i]]].values[0])[0]
                 break
             
         append_name = cell_name[len_cell_name-i:]
         
         for j in append_name:
-            
             if j == '0':
                 transform_name+='a'
             else:
                 transform_name+='p'
                 
     else:
-        
         len_cell_name = len(cell_name)
-        
         for i in range(1,len_cell_name+1):
-            
             if cell_name[:-i] in list(cell_name_to_relpace_name_sheet.index.values):
-                
                 transform_name = (cell_name_to_relpace_name_sheet.loc[[cell_name[:-i]]].values[0])[0]
                 break
             
         append_name = cell_name[len_cell_name-i:]
         
-        for j in append_name:
-            
+        for j in append_name: 
             transform_name += transform[j]
-    
+            
     return transform_name
-        
-
-
 
 def cell_name_transfer(cell_list):
     
@@ -71,19 +57,13 @@ def cell_name_transfer(cell_list):
         
     elif type(cell_list) != list:
         if cell_list[0] == "L":
-            
             if cell_list in list(relpace_name_to_cell_name_sheet.index.values):
-            
                 transfer_cell_list = (relpace_name_to_cell_name_sheet.loc[[cell_list]].values[0])[0]
-                
             else:
-                
                 transfer_cell_list = except_cell(cell_list)
         else:
             if cell_list in list(cell_name_to_relpace_name_sheet.index.values):
-                
                 transfer_cell_list = (cell_name_to_relpace_name_sheet.loc[[cell_list]].values[0])[0]
-            
             else:
                 transfer_cell_list = except_cell(cell_list)
 
@@ -92,25 +72,16 @@ def cell_name_transfer(cell_list):
     else:
         if cell_list[0][0] == "L":
             for i in cell_list:
-                
                 if i in list(relpace_name_to_cell_name_sheet.index.values):
-            
                     transfer_cell_list.append((relpace_name_to_cell_name_sheet.loc[[i]].values[0])[0])
-                
                 else:
-                
                     transfer_cell_list.append(except_cell(i))
-
             
         else:
             for i in cell_list:
-                
                 if i in list(cell_name_to_relpace_name_sheet.index.values):
-                    
                     transfer_cell_list.append((cell_name_to_relpace_name_sheet.loc[[i]].values[0])[0])
-                    
                 else:
-                    
                     transfer_cell_list.append(except_cell(i))
 
     return transfer_cell_list
@@ -124,9 +95,7 @@ def cell_lineage_distance(cell_1, cell_2):
     else:
         cell_1 = cell_name_transfer(cell_1)
         cell_2 = cell_name_transfer(cell_2)
-    
-    
-    
+
     cell_1_list = list(cell_1)
     cell_2_list = list(cell_2)
     
@@ -211,7 +180,6 @@ def mean_IC(data_pd=None, x=None, y=None, order = None, hue=None, hue_color=None
 
 def mean_IC_add(ax = None, data_pd=None, x=None, y=None, order = None, hue=None, hue_color=None, IC=0.95, s=10, color='dodgerblue', ylim=[0,1], figsize=(8,6), legend=False):
 
-    
     list_samples=[] # making a list of arrays
 #    lineage_distance = list(set(data_pd[x]))
 #    lineage_distance.sort()
@@ -260,10 +228,7 @@ plt.rcParams["errorbar.capsize"] = 10
 
 file_path = r'./data'
 
-
-
 # prepare data
-
 relpace_name_sheet = pd.read_csv(os.path.join(file_path, 'binary_sheet.txt'), sep="\t")
 
 cell_name_to_relpace_name_sheet = relpace_name_sheet.set_index("cell_name")
@@ -273,13 +238,10 @@ funder_cell = {'P0':'L', 'AB':'L0', 'P1':'L1', 'EMS':'L10', 'P2':'L11', 'MS':'L1
 transform = {'a':'0', 'p':'1', 'l':'0', 'r':'1', 'd':'0', 'v':'1'}
 
 
-
 CAL_matrix = pd.read_csv(os.path.join(file_path, r'CAL.txt'), sep='\t', index_col=0)
 terminal_cell_list = list(CAL_matrix.index.values)
 
 CAL_divergence_pd = pd.DataFrame(squareform(pdist(CAL_matrix)), index=CAL_matrix.index.values, columns=CAL_matrix.index.values)
-
-
 
 cld_matrix = pd.read_csv(os.path.join(file_path, r'ALL_CLD_MATRIX.txt'), sep='\t', index_col=0)
 cld_matrix = cld_matrix.loc[terminal_cell_list][terminal_cell_list]
@@ -289,13 +251,10 @@ cld_matrix = cld_matrix.astype(float)
 np.fill_diagonal(CAL_divergence_pd.values, np.nan)
 np.fill_diagonal(cld_matrix.values, np.nan)
 
-
-
 #fate dict
 fate = pd.read_csv(os.path.join(file_path, r'cell-fate.txt'), sep='\t', index_col=0)
 fate = fate['fate']
 fate = fate.dropna()
-
 
 fate_list = ['Neu', 'Pha', 'Ski', 'Mus', 'Int']
 fate_cell_list = {}
@@ -303,19 +262,14 @@ for each_fate in fate_list:
     tmp_ = list(fate[fate == each_fate].index.values)
     fate_cell_list[each_fate] = tmp_
 
-
-
-
 all_pair_same_fate_cls_pd = []
 for each_fate in fate_list:
     
     fate_cell_list_ = fate_cell_list[each_fate]
     distance_ = CAL_divergence_pd.loc[fate_cell_list_][fate_cell_list_]
     cld_ = cld_matrix.loc[fate_cell_list_][fate_cell_list_]
-    
     distance_ = triu(distance_)
     cld_ = triu(cld_)
-    
     combine = pd.concat([distance_.unstack().dropna(), cld_.unstack().dropna()], axis=1)
     combine['fate_flag'] = each_fate
     
@@ -371,11 +325,6 @@ cld_matrix_same = cld_matrix[same_fate_flag]
 
 
 
-
-
-
-
-
 ########################################################             raw           ######################################
 
 
@@ -391,7 +340,6 @@ for fate_, cell_list_ in fate_cell_list.items():
 
         cell_distance_diff_list_ = list(cell_distance_pd_diff.loc[each_cell][other_fate].dropna().values)
         cell_distance_same_list_ = list(cell_distance_pd_same.loc[each_cell][cell_list_].dropna().values)
-        
         
         output_tissue.append([fate_, each_cell, np.nanmean(cell_distance_same_list_), np.nanmean(cell_distance_diff_list_)])
 
@@ -409,7 +357,6 @@ diff_f_tissue['flag'] = 'diff tissue'
 diff_f_tissue.columns = ['Tissue', 'cell', 'Chromatin landscape divergence', 'Legend']
 
 sns_pd_tissue = pd.concat([same_f_tissue, diff_f_tissue])
-
 
 sns_pd_tissue = sns_pd_tissue.replace('Neu', 1)
 sns_pd_tissue = sns_pd_tissue.replace('Pha', 2)
@@ -436,7 +383,6 @@ new_order = list(set(combine_two['Tissue']))
 new_order.sort()
 
 
-
 color_dict = {1:'red', 2:'gold', 3:'limegreen', 4:'dodgerblue', 5:'fuchsia'}
 ax = mean_IC(x='Tissue', y='Chromatin landscape divergence', hue='Tissue', hue_color= color_dict, data_pd=sns_pd_same,  order=new_order, IC=0.95, \
              ylim=[7,30], s=15, figsize=(5,5))
@@ -457,13 +403,6 @@ for each_tissue in fate_list:
 
 
 ########################################################             raw           ######################################
-
-
-
-
-
-
-
 
 
 
@@ -490,17 +429,14 @@ for fate_, cell_list_ in fate_cell_list.items():
         cell_list_copy = copy.deepcopy(cell_list_)
         cell_list_copy = set(cell_list_copy) - set(symmetric_cell_list)
         
-        
         cell_cld_same_list_ = list(set(list(cld_matrix_same.loc[each_cell][cell_list_copy].dropna().values)))
         combine_cld = cell_cld_same_list_
-
-
+        
         symmetry_mask = symmetry_matrix.loc[each_cell]
         symmetry_mask = symmetry_mask.fillna(0)
         symmetry_mask = symmetry_mask.astype(bool)
         del_symmetry_mask = ~symmetry_mask
         cell_cld_same_mask_ = (cld_matrix_same.loc[each_cell].isin(combine_cld)) & (del_symmetry_mask)
-        
         
         cell_distance_same_pd_ = cell_distance_pd_same.loc[each_cell][cell_cld_same_mask_].dropna()
         cld_same_pd_ = cld_matrix_same.loc[each_cell][cell_cld_same_mask_].dropna()
@@ -541,10 +477,7 @@ diff_f_remove_symmetry.columns = ['Tissue', 'cell', 'Chromatin landscape diverge
 sns_pd_remove_symmetry = pd.concat([same_f_remove_symmetry, diff_f_remove_symmetry])
 
 
-
-
-
-# plot
+# plot graph
 
 sns_pd_remove_symmetry = sns_pd_remove_symmetry.replace('Neu', 1)
 sns_pd_remove_symmetry = sns_pd_remove_symmetry.replace('Pha', 2)
@@ -553,10 +486,8 @@ sns_pd_remove_symmetry = sns_pd_remove_symmetry.replace('Mus', 4)
 sns_pd_remove_symmetry = sns_pd_remove_symmetry.replace('Int', 5)
 sns_pd_remove_symmetry = sns_pd_remove_symmetry[sns_pd_remove_symmetry['Tissue'].isin([1,2,3,4,5])]
 
-
 sns_pd_same_remove_symmetry = sns_pd_remove_symmetry[sns_pd_remove_symmetry['Legend'] == 'same tissue']
 sns_pd_diff_remove_symmetry = sns_pd_remove_symmetry[sns_pd_remove_symmetry['Legend'] == 'diff tissue']
-
 
 sns_pd_same_remove_symmetry = sns_pd_same_remove_symmetry[['Chromatin landscape divergence', 'Tissue']]
 sns_pd_diff_remove_symmetry = sns_pd_diff_remove_symmetry[['Chromatin landscape divergence', 'Tissue']]
@@ -594,11 +525,6 @@ for each_tissue in fate_list:
 
 
 
-
-
-
-
-
 ########################################################       heterogeneity     ######################################
 
 
@@ -611,7 +537,6 @@ for fate_name in fate_list:
     fate_cell_list_ = fate_cell_list[fate_name]
     CAL_divergence_pd_ = CAL_divergence_pd.loc[fate_cell_list_][fate_cell_list_]
 
-    
     cell_combinations = list(combinations(fate_cell_list_, 2))
     cell_pair_lineage_distance_and_exp_distance = [] 
     for each_pair in cell_combinations:
@@ -620,14 +545,12 @@ for fate_name in fate_list:
         cell_2 = each_pair[1]
         
         if len(cell_name_transfer(cell_1)) == len(cell_name_transfer(cell_2)):
-        
             
             if cell_1[0] == cell_2[0]:
                 flag = cell_1[0]
             else:
                 flag = np.nan
-
-            
+                
             cell_lineage_distance_ = cell_lineage_distance(cell_1, cell_2)
             cell_exp_distance = CAL_divergence_pd_.loc[cell_1, cell_2]
             cell_pair_lineage_distance_and_exp_distance.append([cell_1, cell_2, cell_lineage_distance_, cell_exp_distance])
@@ -647,10 +570,6 @@ for fate_name in fate_list:
             distance_pool_filter.append(each)
             
     cell_pair_lineage_distance_and_exp_distance_df = cell_pair_lineage_distance_and_exp_distance_df[cell_pair_lineage_distance_and_exp_distance_df['Cell lineage distance'].isin(distance_pool_filter)]
-    
-    
-    
-
     
     cld_dict = dict(Counter(cell_pair_lineage_distance_and_exp_distance_df['Cell lineage distance']))
     

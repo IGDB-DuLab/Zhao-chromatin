@@ -36,8 +36,6 @@ exp_matrix_strain = CAL_matrix_binary.sum(axis=0)
 terminal_cell_list = list(CAL_matrix.index.values)
 
 
-
-
 # Proportion of integration sites at which the GFP is expressed in a cell
 
 fig, ax = plt.subplots(figsize=(6,4))
@@ -74,9 +72,6 @@ plt.subplots_adjust(left=0.105, right=0.955, top=0.94 , bottom=0.1)
 
 ############################################################        information content        #################################################################
 
-
-
-
 def information_content(category_dict, category):
     
     ic = 0
@@ -86,10 +81,7 @@ def information_content(category_dict, category):
             ic -= percent_*np.log(percent_)
         else:
             pass
-        
     return ic
-
-
 
 all_value = CAL_matrix.unstack()
 
@@ -98,8 +90,6 @@ position_num = len(CAL_matrix.columns)
 
 min_value = np.nanmin(all_value)
 max_value = np.nanmax(all_value)
-
-
 
 # Between cells
 
@@ -111,7 +101,6 @@ for num in [5,10,15,20,25,30,35,40,45,50]:
     percent_range = np.linspace(min_value,max_value, percent_bin+1)
     percent_range[0] = percent_range[0] - 0.01
 #    percent_range[-1] = np.nanmax(all_value)
-    
     category = np.arange(1,percent_bin+1)
     
 #    all_value_rank = pd.qcut(all_value,  percent_bin, labels=np.arange(1,percent_bin+1))
@@ -121,29 +110,21 @@ for num in [5,10,15,20,25,30,35,40,45,50]:
     max_dict_cell = {}
     for i in category:
         max_dict_cell[i] = int(cell_num/percent_bin)
-        
     max_ic = information_content(max_dict_cell, category)
-    
     
     information_content_all_cell = []
     
     for i in all_value_rank_matrix.columns.values:
         
-        
         cell_ = all_value_rank_matrix[i]
-        
         cell_value_count_ = dict(Counter(cell_.values))
-        
         ic_ = information_content(cell_value_count_, category)
-        
         information_content_all_cell.append([i, ic_])
         
     information_content_all_cell_pd = pd.DataFrame(information_content_all_cell)
     information_content_all_cell_pd.columns = ['cell', 'IC']
     
-    
     information_content_all_cell_pd['IC'].max()/max_ic
-    
     information_content_all_cell_pd['IC'].median()/max_ic
     information_content_all_cell_pd['IC'].mean()/max_ic
     
@@ -154,7 +135,6 @@ for num in [5,10,15,20,25,30,35,40,45,50]:
 simul_pd = pd.DataFrame(simul)
 simul_pd.columns = ['bin_num', 'max', 'median', 'mean']
 
-
 fig, ax = plt.subplots(figsize=(4,4))
 ax = sns.barplot(x='bin_num', y='median', data=simul_pd, color='dodgerblue')
 plt.xticks(np.arange(10), np.arange(5,55, 5))
@@ -163,14 +143,7 @@ plt.ylabel('Median / Max')
 plt.xlabel('Number of bins')
 plt.subplots_adjust(left=0.185, right=0.975, top=0.915 , bottom=0.165)
 
-
-
-
-
-
 # Between positions
-
-
 simul = []
 for num in [5,10,15,20,25,30,35,40,45,50]:
     
@@ -180,39 +153,27 @@ for num in [5,10,15,20,25,30,35,40,45,50]:
     percent_range[-1] = np.nanmax(all_value)   
     
     category = np.arange(1,percent_bin+1)
-    
 #    all_value_rank = pd.qcut(all_value,  percent_bin, labels=np.arange(1,percent_bin+1))
     all_value_rank = pd.cut(all_value,  percent_range, labels=category)
     all_value_rank_matrix = all_value_rank.unstack().T
     
-    
-    
     max_dict_cell = {}
     for i in category:
         max_dict_cell[i] = int(position_num/percent_bin)
-        
     max_ic = information_content(max_dict_cell, category)
     
-    
     information_content_all_cell = []
-    
     for i in all_value_rank_matrix.index.values:
         
-        
         cell_ = all_value_rank_matrix.loc[i]
-        
         cell_value_count_ = dict(Counter(cell_.values))
-        
         ic_ = information_content(cell_value_count_, category)
-        
         information_content_all_cell.append([i, ic_])
         
     information_content_all_cell_pd = pd.DataFrame(information_content_all_cell)
     information_content_all_cell_pd.columns = ['cell', 'IC']
     
-    
     information_content_all_cell_pd['IC'].max()/max_ic
-    
     information_content_all_cell_pd['IC'].median()/max_ic
     information_content_all_cell_pd['IC'].mean()/max_ic
     
@@ -234,10 +195,6 @@ plt.subplots_adjust(left=0.185, right=0.975, top=0.915 , bottom=0.165)
 
     
 ############################################################        information content        #################################################################
-
-
-
-
 
 
 
@@ -285,8 +242,6 @@ output_divergence_pd.columns = ['strain', 'emb1', 'emb2', 'euclidean']
 output_divergence_pd = output_divergence_pd.set_index('strain')
 output_divergence_pd = output_divergence_pd[['euclidean']]
 output_corr_pd_mean = output_divergence_pd.mean(level=0)
-
-
 
 
 output_other_divergence = []

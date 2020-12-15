@@ -16,7 +16,6 @@ from matplotlib.colors import LinearSegmentedColormap
 # plot mean + CI graph
 def mean_IC(data_pd=None, x=None, y=None, order = None, hue=None, hue_color=None, IC=0.95, s=10, color='dodgerblue', ylim=[0,1], figsize=(8,6), legend=False):
 
-    
     list_samples=[] # making a list of arrays
 #    lineage_distance = list(set(data_pd[x]))
 #    lineage_distance.sort()
@@ -72,6 +71,9 @@ def mean_IC(data_pd=None, x=None, y=None, order = None, hue=None, hue_color=None
         
     return ax  
 
+plt.rcParams['font.size'] = 20
+plt.rcParams['font.family'] = 'arial'
+plt.rcParams["errorbar.capsize"] = 10
 
 blue_white_red = ['#0070c0', (1, 1, 1), (1,0,0)] # blue-white-red2
 cmap = LinearSegmentedColormap.from_list('blue_white_red', blue_white_red, N=100)
@@ -79,22 +81,13 @@ cmap.set_bad('k')
 cm.register_cmap("blue_white_red", cmap)
 cpal = sns.color_palette("blue_white_red",  n_colors=100)
 
-
 add_color = (0,0,0)
-
 new_cpal = [add_color]
 new_cpal.extend(cpal)
 
-
-plt.rcParams['font.size'] = 20
-plt.rcParams['font.family'] = 'arial'
-plt.rcParams["errorbar.capsize"] = 10
-
 file_path = r'./data'
-
 # prepare data
 symmetry = pd.read_csv(os.path.join(file_path, r'symmetry.txt'), sep='\t')
-
 
 # symmetry predetermination
 

@@ -17,48 +17,37 @@ from scipy.stats import t, mannwhitneyu, pearsonr
 from scipy.spatial.distance import pdist, squareform
 from statsmodels.sandbox.stats.multicomp import multipletests
 
-# transforming cell lineage name
+### transforming cell lineage name
 def except_cell(cell_name):
     
     transform_name = None
-    
     if cell_name[0] == 'L':
-        
         len_cell_name = len(cell_name)
-        
         for i in range(1,len_cell_name+1):
-            
             if cell_name[:-i] in list(relpace_name_to_cell_name_sheet.index.values):
-                
                 transform_name = (relpace_name_to_cell_name_sheet.loc[[cell_name[:-i]]].values[0])[0]
                 break
             
         append_name = cell_name[len_cell_name-i:]
         
         for j in append_name:
-            
             if j == '0':
                 transform_name+='a'
             else:
                 transform_name+='p'
                 
     else:
-        
         len_cell_name = len(cell_name)
-        
         for i in range(1,len_cell_name+1):
-            
             if cell_name[:-i] in list(cell_name_to_relpace_name_sheet.index.values):
-                
                 transform_name = (cell_name_to_relpace_name_sheet.loc[[cell_name[:-i]]].values[0])[0]
                 break
             
         append_name = cell_name[len_cell_name-i:]
         
-        for j in append_name:
-            
+        for j in append_name: 
             transform_name += transform[j]
-    
+            
     return transform_name
         
 
@@ -72,19 +61,13 @@ def cell_name_transfer(cell_list):
         
     elif type(cell_list) != list:
         if cell_list[0] == "L":
-            
             if cell_list in list(relpace_name_to_cell_name_sheet.index.values):
-            
                 transfer_cell_list = (relpace_name_to_cell_name_sheet.loc[[cell_list]].values[0])[0]
-                
             else:
-                
                 transfer_cell_list = except_cell(cell_list)
         else:
             if cell_list in list(cell_name_to_relpace_name_sheet.index.values):
-                
                 transfer_cell_list = (cell_name_to_relpace_name_sheet.loc[[cell_list]].values[0])[0]
-            
             else:
                 transfer_cell_list = except_cell(cell_list)
 
@@ -93,32 +76,21 @@ def cell_name_transfer(cell_list):
     else:
         if cell_list[0][0] == "L":
             for i in cell_list:
-                
                 if i in list(relpace_name_to_cell_name_sheet.index.values):
-            
                     transfer_cell_list.append((relpace_name_to_cell_name_sheet.loc[[i]].values[0])[0])
-                
                 else:
-                
                     transfer_cell_list.append(except_cell(i))
-
             
         else:
             for i in cell_list:
-                
                 if i in list(cell_name_to_relpace_name_sheet.index.values):
-                    
                     transfer_cell_list.append((cell_name_to_relpace_name_sheet.loc[[i]].values[0])[0])
-                    
                 else:
-                    
                     transfer_cell_list.append(except_cell(i))
 
     return transfer_cell_list
 
-
 # calculating cell lineage distance
-
 def cell_lineage_distance(cell_1, cell_2):
     
     if cell_1[0] == 'L':
@@ -273,13 +245,10 @@ def mean_IC(data_pd=None, x=None, y=None, order = None, hue=None, hue_color=None
 def triu_matrix(matrix_input):
     
     len_matrix = len(matrix_input)
-    
     model_triu = pd.DataFrame(np.triu(pd.DataFrame(np.eye(len_matrix)).replace(1,2).replace(0,1).replace(2,0)))
     model_triu = (model_triu == 1)
-    
     model_triu.index = matrix_input.index
     model_triu.columns = matrix_input.columns
-    
     matrix = matrix_input[model_triu]
     
     return matrix
@@ -324,9 +293,7 @@ terminal_cell_list = list(CAL_matrix.index.values)
 CAL_divergence_pd = pd.DataFrame(squareform(pdist(CAL_matrix)), index=CAL_matrix.index.values, columns=CAL_matrix.index.values)
 
 
-
 cell_combinations = list(itertools.combinations(list(CAL_matrix.index.values), 2))
-
 cell_pair_lineage_distance_and_divergence = [] 
 count = 0
 for each_pair in cell_combinations:
@@ -335,15 +302,12 @@ for each_pair in cell_combinations:
     cell_2 = each_pair[1]
     
     if len(cell_name_transfer(cell_1)) == len(cell_name_transfer(cell_2)):
-        
 
         cell_lineage_distance_ = cell_lineage_distance(cell_1, cell_2)
         cell_exp_distance = CAL_divergence_pd.loc[cell_1, cell_2]
         
         fate_divergence_ = 1 - fate_similarity.loc[cell_1, cell_2]
-        
         cell_pair_lineage_distance_and_divergence.append([cell_1, cell_2, cell_lineage_distance_, cell_exp_distance, fate_divergence_])
-        
         
     count += 1
     print(count)
@@ -353,21 +317,14 @@ cell_pair_lineage_distance_and_divergence_pd.columns = ['cell_1', 'cell_2', 'Cel
 
 cell_pair_lineage_distance_and_divergence_pd = cell_pair_lineage_distance_and_divergence_pd[cell_pair_lineage_distance_and_divergence_pd['Cell lineage distance'] % 2 == 0]
 
-
-cell_pair_lineage_distance_and_divergence_pd['Chromatin landscape divergence'].mean()
-
-
+#cell_pair_lineage_distance_and_divergence_pd['Chromatin landscape divergence'].mean()
 
 
 # plot
-
-
-
 plt.rcParams['xtick.major.pad'] = 2
 plt.rcParams["errorbar.capsize"] = 5
 plt.rcParams["font.family"] = "arial"
 plt.rcParams['font.size'] = 16
-
 
 fig, ax = plt.subplots(figsize=(5,3.3))
 
@@ -396,12 +353,9 @@ plt.xticks(x, ['2','4','6','8','10','12','14','16','18'])
 
 
 # CAL bin
-
 CAL_bin = [0, 10, 20, 1000]
 
-
 cell_pair_lineage_distance_and_divergence_pd['bin'] = pd.cut(cell_pair_lineage_distance_and_divergence_pd['Chromatin landscape divergence'], bins=CAL_bin, labels=[1,2,3])
-
 
 plt.rcParams["errorbar.capsize"] = 10
 plt.rcParams["font.family"] = "arial"
@@ -424,7 +378,6 @@ for each_cld in [6,8,10,12,14]:
         if number_ > 3:
             final_bin.append(i)
         
-        
     mean_IC(x='bin', y='Fate divergence', data_pd=fate_and_lineage_pd_, color='dodgerblue', \
                  order=CAL_bin_list_, IC=0.95, ylim=[0.2,1], s=15, figsize=(4,4))
     
@@ -432,20 +385,13 @@ for each_cld in [6,8,10,12,14]:
     plt.xlim(0.5,3.5)    
 
 
-
-
-
 # CAL landscape transient points
-
-
 CAL_divergence_pd_normalize_cld = pd.read_csv(os.path.join(file_path, r'CAL_normalize_cld.txt'), sep='\t', index_col=0)
 
 terminal_cell_list_replace = cell_name_transfer(list(CAL_divergence_pd_normalize_cld.index.values))
 
 CAL_divergence_pd_normalize_cld.index = terminal_cell_list_replace
 CAL_divergence_pd_normalize_cld.columns = terminal_cell_list_replace
-
-
 
 cell_list = pd.read_csv(os.path.join(file_path, r'cell-list.txt'), sep='\t', index_col=0)
 cell_list = list(cell_list.index.values)
@@ -455,14 +401,9 @@ all_cell_list_replace.append('L')
 all_cell_list_replace.append('L1')
 all_cell_list_replace.append('L0')
 
-
-
-
 fate_similarity_change_index = copy.deepcopy(fate_similarity)
 fate_similarity_change_index.index = cell_name_transfer(list(fate_similarity_change_index.index))
 fate_similarity_change_index.columns = cell_name_transfer(list(fate_similarity_change_index.columns))
-
-
 
 
 cutoff = 0.05
@@ -480,8 +421,6 @@ for cell in all_cell_list_replace:
     child_1_list = []
     child_2_list = []
     mother_list = []
-    
-    
     
     for i in terminal_cell_list_replace:
         
@@ -509,7 +448,6 @@ for cell in all_cell_list_replace:
         intra2_ = list(combinations(child_2_list, 2))
         inter_ = list(product(child_1_list, child_2_list))
         
-        
         intra1_distance_ = []
         for i in intra1_:
             intra1_distance_.append(CAL_divergence_pd_normalize_cld.loc[i[0]][i[1]])
@@ -521,7 +459,6 @@ for cell in all_cell_list_replace:
         inter_distance_ = []
         for i in inter_:
             inter_distance_.append(CAL_divergence_pd_normalize_cld.loc[i[0]][i[1]])
-    
     
         intra1_mean = np.nanmean(intra1_distance_)
         intra2_mean = np.nanmean(intra2_distance_)            
@@ -537,7 +474,6 @@ all_cell_stats_pvalue_df = pd.DataFrame(all_cell_stats_pvalue_count)
 all_cell_stats_pvalue_df.columns = ['cell_name', 'Fate divergence','intra1_mean','intra2_mean', 'inter_mean', 'pvalue1', 'pvalue2']  # values
 all_cell_stats_pvalue_df['Transition score of CAL'] = (all_cell_stats_pvalue_df['inter_mean']/all_cell_stats_pvalue_df['intra1_mean'] + \
                                             all_cell_stats_pvalue_df['inter_mean']/all_cell_stats_pvalue_df['intra2_mean'])/2
-
 
 
 all_cell_stats_pvalue_df['qvalue1'] = pval_correct(all_cell_stats_pvalue_df['pvalue1'])['qvalue']
