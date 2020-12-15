@@ -9,6 +9,7 @@ This repository contains the source code for reproducing the analyses of our stu
 - [CAL_tissue.py](https://github.com/genetics-dulab/scCAL/blob/main/CAL_tissue.py) Performing analysis related to cell tissue.
 - [CAL_symmetry.py](https://github.com/genetics-dulab/scCAL/blob/main/CAL_symmetry.py) Performing analysis related to cell symmetry.
 - [CDCA.py](https://github.com/genetics-dulab/scCAL/blob/main/CDCA.py) Performing analysis related to chromatin co-dynamic region.
+- [DATA](https://github.com/genetics-dulab/scCAL/blob/main/data) folder contains the raw data needed for downstream analysis.
 
 ## Prerequisites
 All the dependencies are listed in requirements.txt. 
