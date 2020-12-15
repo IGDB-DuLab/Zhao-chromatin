@@ -1,6 +1,6 @@
 # Single-cell Chromatin Acitivity Landscape Analysis
 
-This repository contains the source code for reproducing the analyses of our study titled "Multidimensional Chromatin-based Regulation of *C. elegans* Embryogenesis" by Zhiguang Zhao # , Rong Fan # , Weina Xu, Yangyang Wang, Xuehua Ma, and Zhuo Du* 
+This repository contains the source code for reproducing the analyses of our study titled "Multidimensional Chromatin-based Regulation of *C. elegans* Embryogenesis" by Zhiguang Zhao# , Rong Fan# , Weina Xu, Yangyang Wang, Xuehua Ma, and Zhuo Du* 
 
 ## Description of files
 - [fluorescent_compensation.py](https://github.com/genetics-dulab/scCAL/blob/main/fluorescent_compensation.py)  Compensation for depth-dependent attenuation of fluorescence intensity
