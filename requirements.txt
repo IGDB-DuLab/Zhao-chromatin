@@ -1,0 +1,17 @@
+## Prerequisites
+
+All the dependencies are listed in requirements.txt. 
+
+Most analyses were performed under python 3.7.1
+
+Additional Python packages required for analysis include:
+
+- pandas 1.0.3
+- numpy 1.19.1
+- scipy 1.2.1
+- statsmodels 0.11.1
+
+Additional Python packages required for plotting the figures include:
+
+- seaborn 0.11.0
+- matplotlib 3.0.2
