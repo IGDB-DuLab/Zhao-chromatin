@@ -4,11 +4,11 @@ This repository contains the source code for reproducing the analyses of our stu
 
 ## Description of files
 - [fluorescent_compensation.py](https://github.com/genetics-dulab/scCAL/blob/main/fluorescent_compensation.py)  Compensation for depth-dependent attenuation of fluorescence intensity
-- [data_stats.py](https://github.com/genetics-dulab/scCAL/blob/main/data_stats.py) data distribution, CV, infomation content, variability
-- [CAL_lineage.py](https://github.com/genetics-dulab/scCAL/blob/main/CAL_lineage.py) related to lineage analysis
-- [CAL_tissue.py](https://github.com/genetics-dulab/scCAL/blob/main/CAL_tissue.py) related to tissue analysis
-- [CAL_symmetry.py](https://github.com/genetics-dulab/scCAL/blob/main/CAL_symmetry.py) related to symmetry analysis
-- [CDCA.py](https://github.com/genetics-dulab/scCAL/blob/main/CDCA.py) related to CDAC analysis
+- [data_stats.py](https://github.com/genetics-dulab/scCAL/blob/main/data_stats.py) Calculation of data distribution, CV, infomation content and variability.
+- [CAL_lineage.py](https://github.com/genetics-dulab/scCAL/blob/main/CAL_lineage.py) Performing analysis related to cell lineage.
+- [CAL_tissue.py](https://github.com/genetics-dulab/scCAL/blob/main/CAL_tissue.py) Performing analysis related to cell tissue.
+- [CAL_symmetry.py](https://github.com/genetics-dulab/scCAL/blob/main/CAL_symmetry.py) Performing analysis related to cell symmetry.
+- [CDCA.py](https://github.com/genetics-dulab/scCAL/blob/main/CDCA.py) Performing analysis related to chromatin co-dynamic region.
 
 ## Prerequisites
 All the dependencies are listed in requirements.txt. 
