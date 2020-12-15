@@ -43,9 +43,6 @@ def except_cell(cell_name):
             transform_name += transform[j]
             
     return transform_name
-        
-
-
 
 def cell_name_transfer(cell_list):
     
