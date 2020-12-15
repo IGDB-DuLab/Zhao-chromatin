@@ -1,4 +1,4 @@
-# single-cell Chromatin Acitivity landscape analysis
+# Single-cell Chromatin Acitivity Landscape Analysis
 
 This repository contains the source code for reproducing the analyses of our study titled "Multidimensional Chromatin-based Regulation of *C. elegans* Embryogenesis" by Zhiguang Zhao # , Rong Fan # , Weina Xu, Yangyang Wang, Xuehua Ma, and Zhuo Du* 
 
