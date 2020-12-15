@@ -11,48 +11,37 @@ import pandas as pd
 import numpy as np
 
 
-# transforming cell lineage name
+### transforming cell lineage name
 def except_cell(cell_name):
     
     transform_name = None
-    
     if cell_name[0] == 'L':
-        
         len_cell_name = len(cell_name)
-        
         for i in range(1,len_cell_name+1):
-            
             if cell_name[:-i] in list(relpace_name_to_cell_name_sheet.index.values):
-                
                 transform_name = (relpace_name_to_cell_name_sheet.loc[[cell_name[:-i]]].values[0])[0]
                 break
             
         append_name = cell_name[len_cell_name-i:]
         
         for j in append_name:
-            
             if j == '0':
                 transform_name+='a'
             else:
                 transform_name+='p'
                 
     else:
-        
         len_cell_name = len(cell_name)
-        
         for i in range(1,len_cell_name+1):
-            
             if cell_name[:-i] in list(cell_name_to_relpace_name_sheet.index.values):
-                
                 transform_name = (cell_name_to_relpace_name_sheet.loc[[cell_name[:-i]]].values[0])[0]
                 break
             
         append_name = cell_name[len_cell_name-i:]
         
-        for j in append_name:
-            
+        for j in append_name: 
             transform_name += transform[j]
-    
+            
     return transform_name
         
 
@@ -66,19 +55,13 @@ def cell_name_transfer(cell_list):
         
     elif type(cell_list) != list:
         if cell_list[0] == "L":
-            
             if cell_list in list(relpace_name_to_cell_name_sheet.index.values):
-            
                 transfer_cell_list = (relpace_name_to_cell_name_sheet.loc[[cell_list]].values[0])[0]
-                
             else:
-                
                 transfer_cell_list = except_cell(cell_list)
         else:
             if cell_list in list(cell_name_to_relpace_name_sheet.index.values):
-                
                 transfer_cell_list = (cell_name_to_relpace_name_sheet.loc[[cell_list]].values[0])[0]
-            
             else:
                 transfer_cell_list = except_cell(cell_list)
 
@@ -87,31 +70,22 @@ def cell_name_transfer(cell_list):
     else:
         if cell_list[0][0] == "L":
             for i in cell_list:
-                
                 if i in list(relpace_name_to_cell_name_sheet.index.values):
-            
                     transfer_cell_list.append((relpace_name_to_cell_name_sheet.loc[[i]].values[0])[0])
-                
                 else:
-                
                     transfer_cell_list.append(except_cell(i))
-
             
         else:
             for i in cell_list:
-                
                 if i in list(cell_name_to_relpace_name_sheet.index.values):
-                    
                     transfer_cell_list.append((cell_name_to_relpace_name_sheet.loc[[i]].values[0])[0])
-                    
                 else:
-                    
                     transfer_cell_list.append(except_cell(i))
 
     return transfer_cell_list
 
 
-# sorting cell name list according lineage order
+### sorting cell name list according lineage order
 def lineage_order(cell_list):
     
     if cell_list[0][0] == "L":
@@ -155,7 +129,7 @@ def lineage_order(cell_list):
     return lineage_cell_list
     
 
-# selecting terminall cell list
+###  selecting terminall cell list
 def get_terminal_cell(cell_list):
     
     if cell_list[0][0] == "L":
@@ -188,7 +162,7 @@ def get_terminal_cell(cell_list):
     return terminal_cell_list
 
 
-# compensating fluorescent intensity
+### compensating fluorescent intensity
 def compensation(emb):
     
     embryo_name = os.path.basename(emb)
