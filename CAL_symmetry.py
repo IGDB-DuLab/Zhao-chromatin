@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Dec 15 11:28:53 2020
+Created on Tue Aug 15 11:28:53 2019
 
 @author: ZZG
 """
@@ -8,12 +8,12 @@ import os
 import numpy as np
 import pandas as pd
 import seaborn as sns
+from matplotlib import cm
 import matplotlib.pyplot as plt
 from scipy.stats import t, wilcoxon
 from matplotlib.colors import LinearSegmentedColormap
-from matplotlib import cm
 
-
+# plot mean + CI graph
 def mean_IC(data_pd=None, x=None, y=None, order = None, hue=None, hue_color=None, IC=0.95, s=10, color='dodgerblue', ylim=[0,1], figsize=(8,6), legend=False):
 
     
@@ -90,7 +90,7 @@ plt.rcParams['font.size'] = 20
 plt.rcParams['font.family'] = 'arial'
 plt.rcParams["errorbar.capsize"] = 10
 
-file_path = r'I:\position-effect\FINAL\MSB\analysis\software\scCAL\data'
+file_path = r'./data'
 
 # prepare data
 symmetry = pd.read_csv(os.path.join(file_path, r'symmetry.txt'), sep='\t')

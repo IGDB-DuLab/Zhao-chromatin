@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Jul  7 11:33:23 2019
+Created on Sun Feb  7 11:33:23 2019
 
 @author: ZZG
 """
@@ -11,6 +11,7 @@ import pandas as pd
 import numpy as np
 
 
+# transforming cell lineage name
 def except_cell(cell_name):
     
     transform_name = None
@@ -108,7 +109,9 @@ def cell_name_transfer(cell_list):
                     transfer_cell_list.append(except_cell(i))
 
     return transfer_cell_list
-            
+
+
+# sorting cell name list according lineage order
 def lineage_order(cell_list):
     
     if cell_list[0][0] == "L":
@@ -152,7 +155,7 @@ def lineage_order(cell_list):
     return lineage_cell_list
     
 
-
+# selecting terminall cell list
 def get_terminal_cell(cell_list):
     
     if cell_list[0][0] == "L":
@@ -185,6 +188,7 @@ def get_terminal_cell(cell_list):
     return terminal_cell_list
 
 
+# compensating fluorescent intensity
 def compensation(emb):
     
     embryo_name = os.path.basename(emb)
@@ -379,10 +383,10 @@ def compensation(emb):
     print('compensation result output succeeded!')
     
     
-emb_file = r'I:\position-effect\FINAL\MSB\analysis\software\scCAL\data'
+file_path = r'./data'
 
 # prepare data
-relpace_name_sheet = pd.read_csv(os.path.join(emb_file, 'binary_sheet.txt'), sep="\t")
+relpace_name_sheet = pd.read_csv(os.path.join(file_path, 'binary_sheet.txt'), sep="\t")
 
 cell_name_to_relpace_name_sheet = relpace_name_sheet.set_index("cell_name")
 relpace_name_to_cell_name_sheet = relpace_name_sheet.set_index("replace_name")
@@ -392,4 +396,4 @@ transform = {'a':'0', 'p':'1', 'l':'0', 'r':'1', 'd':'0', 'v':'1'}
 
 
 
-compensation(os.path.join(emb_file, r'test_embryo.txt'))
+compensation(os.path.join(file_path, r'test_embryo.txt'))

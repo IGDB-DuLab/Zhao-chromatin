@@ -1,30 +1,28 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Dec 14 19:49:38 2020
+Created on Mon Mar 14 19:49:38 2019
 
 @author: ZZG
 """
 
-
 import os
 import copy
-import scipy
 import numpy as np
 import pandas as pd
 import seaborn as sns
 from collections import Counter
 import matplotlib.pyplot as plt
 from itertools import combinations, product
-from scipy.stats import wilcoxon, mannwhitneyu
 from scipy.spatial.distance import pdist, squareform
-import Ccell.get_terminal_cell_from_unique_cell_list as gt
 
 
 plt.rcParams["font.family"] = "arial"
 plt.rcParams['font.size'] = 16
 plt.rcParams['xtick.major.pad'] = 6
 
-CAL_matrix = pd.read_csv(r'I:\position-effect\FINAL\MSB\analysis\software\scCAL\data\CAL.txt', sep='\t', index_col=0)
+file_path = r'./data'
+
+CAL_matrix = pd.read_csv(os.path.join(file_path, r'CAL.txt'), sep='\t', index_col=0)
 CAL_matrix_binary = copy.deepcopy(CAL_matrix)
 
 binary_mask = CAL_matrix > 0
@@ -244,7 +242,7 @@ plt.subplots_adjust(left=0.185, right=0.975, top=0.915 , bottom=0.165)
 
 
 
-exp_matrix = pd.read_csv(r'I:\position-effect\FINAL\MSB\analysis\software\scCAL\data\embryo_matrix.txt', sep='\t', index_col=0)
+exp_matrix = pd.read_csv(os.path.join(file_path, r'embryo_matrix.txt'), sep='\t', index_col=0)
 exp_matrix_binary = copy.deepcopy(exp_matrix)
 exp_matrix_mask = exp_matrix > 0
 exp_matrix_binary[exp_matrix_mask] = 1

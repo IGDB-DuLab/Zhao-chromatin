@@ -5,19 +5,18 @@ Created on Fri Jul 19 11:02:37 2019
 @author: ZZG
 """
 
-
 import os
 import copy
 import numpy as np
 import pandas as pd
-from scipy.spatial.distance import pdist, squareform
-from itertools import combinations
-import seaborn as sns
-import matplotlib.pyplot as plt
-from scipy.stats import mannwhitneyu
 from scipy.stats import t
 from collections import Counter
+import matplotlib.pyplot as plt
+from itertools import combinations
+from scipy.stats import mannwhitneyu
+from scipy.spatial.distance import pdist, squareform
 
+# transforming cell lineage name
 def except_cell(cell_name):
     
     transform_name = None
@@ -116,6 +115,8 @@ def cell_name_transfer(cell_list):
 
     return transfer_cell_list
 
+
+# calculating cell lineage distance
 def cell_lineage_distance(cell_1, cell_2):
     
     if cell_1[0] == 'L':
@@ -149,40 +150,9 @@ def cell_lineage_distance(cell_1, cell_2):
     return distance
 
 
-def mean_IC_add(ax = None, data_pd=None, x=None, y=None, order = None, hue=None, hue_color=None, IC=0.95, s=10, color='dodgerblue', ylim=[0,1], figsize=(8,6), legend=False):
-
-    
-    list_samples=[] # making a list of arrays
-#    lineage_distance = list(set(data_pd[x]))
-#    lineage_distance.sort()
-    for i in order:
-        list_samples.append(list(data_pd[data_pd[x] == i][y].values))
-    
-    def W_array(array, conf=IC): # function that returns W based on the array provided
-        t_num = t(df = len(array) - 1).ppf((1 + conf) /2)
-        W = t_num * np.std(array, ddof=1) / np.sqrt(len(array))
-        return W # the error
-    
-    if hue == None:
-    
-        W_list = list()
-        mean_list = list()
-        for i in range(len(list_samples)):
-            W_list.append(W_array(list_samples[i])) # makes a list of W for each array
-            mean_list.append(np.nanmean(list_samples[i])) # same for the means to plot
-
-        ax.errorbar(x=order, y=mean_list, yerr=W_list, fmt='o', color=color, markersize=s)
-        #plt.axvline(.25, ls='--') # this is only to demonstrate that 95%
-                                  # of the 95% CI contain the actual mean
-        plt.xticks(order, order) 
-        plt.ylim(ylim)
-        
-    return ax  
-
-
+# plot mean + CI graph
 def mean_IC(data_pd=None, x=None, y=None, order = None, hue=None, hue_color=None, IC=0.95, s=10, color='dodgerblue', ylim=[0,1], figsize=(8,6), legend=False):
 
-    
     list_samples=[] # making a list of arrays
 #    lineage_distance = list(set(data_pd[x]))
 #    lineage_distance.sort()
@@ -238,6 +208,39 @@ def mean_IC(data_pd=None, x=None, y=None, order = None, hue=None, hue_color=None
         
     return ax  
 
+
+def mean_IC_add(ax = None, data_pd=None, x=None, y=None, order = None, hue=None, hue_color=None, IC=0.95, s=10, color='dodgerblue', ylim=[0,1], figsize=(8,6), legend=False):
+
+    
+    list_samples=[] # making a list of arrays
+#    lineage_distance = list(set(data_pd[x]))
+#    lineage_distance.sort()
+    for i in order:
+        list_samples.append(list(data_pd[data_pd[x] == i][y].values))
+    
+    def W_array(array, conf=IC): # function that returns W based on the array provided
+        t_num = t(df = len(array) - 1).ppf((1 + conf) /2)
+        W = t_num * np.std(array, ddof=1) / np.sqrt(len(array))
+        return W # the error
+    
+    if hue == None:
+    
+        W_list = list()
+        mean_list = list()
+        for i in range(len(list_samples)):
+            W_list.append(W_array(list_samples[i])) # makes a list of W for each array
+            mean_list.append(np.nanmean(list_samples[i])) # same for the means to plot
+
+        ax.errorbar(x=order, y=mean_list, yerr=W_list, fmt='o', color=color, markersize=s)
+        #plt.axvline(.25, ls='--') # this is only to demonstrate that 95%
+                                  # of the 95% CI contain the actual mean
+        plt.xticks(order, order) 
+        plt.ylim(ylim)
+        
+    return ax  
+
+
+# extracting the upper triangular matrix
 def triu(matrix):
     
     matrix_bk = copy.deepcopy(matrix)
@@ -254,9 +257,13 @@ plt.rcParams['font.size'] = 20
 plt.rcParams['font.family'] = 'arial'
 plt.rcParams["errorbar.capsize"] = 10
 
-file_path = r'I:\position-effect\FINAL\MSB\analysis\software\scCAL\data'
+
+file_path = r'./data'
+
+
 
 # prepare data
+
 relpace_name_sheet = pd.read_csv(os.path.join(file_path, 'binary_sheet.txt'), sep="\t")
 
 cell_name_to_relpace_name_sheet = relpace_name_sheet.set_index("cell_name")
@@ -274,7 +281,7 @@ CAL_divergence_pd = pd.DataFrame(squareform(pdist(CAL_matrix)), index=CAL_matrix
 
 
 
-cld_matrix = pd.read_csv(r'I:\position-effect\ALL_CLD_MATRIX.txt', sep='\t', index_col=0)
+cld_matrix = pd.read_csv(os.path.join(file_path, r'ALL_CLD_MATRIX.txt'), sep='\t', index_col=0)
 cld_matrix = cld_matrix.loc[terminal_cell_list][terminal_cell_list]
 cld_matrix = cld_matrix.astype(float)
 
@@ -297,8 +304,6 @@ for each_fate in fate_list:
     fate_cell_list[each_fate] = tmp_
 
 
-
-    
 
 
 all_pair_same_fate_cls_pd = []
@@ -355,7 +360,7 @@ same_fate_flag = all_pair_same_fate_matrix == 1
 diff_fate_flag = all_pair_same_fate_matrix == 0
 
 
-
+# get same/distinct tissue cell-cell CAL divergence
 
 cell_distance_pd_diff = CAL_divergence_pd[diff_fate_flag]
 cld_matrix_diff = cld_matrix[diff_fate_flag]
@@ -452,6 +457,14 @@ for each_tissue in fate_list:
 
 
 ########################################################             raw           ######################################
+
+
+
+
+
+
+
+
 
 
 
@@ -582,9 +595,11 @@ for each_tissue in fate_list:
 
 
 
+
+
+
+
 ########################################################       heterogeneity     ######################################
-
-
 
 
 fate_color_dict = {'Neu':'red', 'Pha':'gold', 'Ski':'limegreen', 'Mus':'dodgerblue', 'Int':'fuchsia'}
@@ -673,6 +688,7 @@ for fate_name in fate_list:
                  hue=None, hue_color=None, IC=0.95, s=15, color=color_fate_, ylim=[0,20], figsize=(5,5), legend=False)
 #    plt.xlim([1, 17])
 
+########################################################       heterogeneity     ######################################
 
 #
 #

@@ -11,15 +11,13 @@ import itertools
 import numpy as np
 import pandas as pd
 import seaborn as sns
-from matplotlib import cm
 import matplotlib.pyplot as plt
 from itertools import combinations, product
 from scipy.stats import t, mannwhitneyu, pearsonr
 from scipy.spatial.distance import pdist, squareform
-from matplotlib.colors import LinearSegmentedColormap
 from statsmodels.sandbox.stats.multicomp import multipletests
 
-
+# transforming cell lineage name
 def except_cell(cell_name):
     
     transform_name = None
@@ -119,6 +117,8 @@ def cell_name_transfer(cell_list):
     return transfer_cell_list
 
 
+# calculating cell lineage distance
+
 def cell_lineage_distance(cell_1, cell_2):
     
     if cell_1[0] == 'L':
@@ -151,7 +151,7 @@ def cell_lineage_distance(cell_1, cell_2):
     
     return distance
 
-
+# plot mean + std graph
 def mean_std(data_pd=None, x=None, y=None, order = None, hue=None, hue_color=None, s=10, color='dodgerblue', ylim=[0,1], legend=False, ax=None):
 
     list_samples=[] # making a list of arrays
@@ -208,7 +208,7 @@ def mean_std(data_pd=None, x=None, y=None, order = None, hue=None, hue_color=Non
 
 
 
-
+# plot mean + CI graph
 def mean_IC(data_pd=None, x=None, y=None, order = None, hue=None, hue_color=None, IC=0.95, s=10, color='dodgerblue', ylim=[0,1], figsize=(8,6), legend=False):
 
     
@@ -269,7 +269,7 @@ def mean_IC(data_pd=None, x=None, y=None, order = None, hue=None, hue_color=None
 
 
 
-
+# extracting the upper triangular matrix
 def triu_matrix(matrix_input):
     
     len_matrix = len(matrix_input)
@@ -284,6 +284,8 @@ def triu_matrix(matrix_input):
     
     return matrix
 
+
+# p-value correction for multiple tests
 def pval_correct(pvalue_list):
     all_cell_pvalue_df = pd.DataFrame(pvalue_list)
     all_cell_pvalue_df.columns = ['pvalue']  # values
@@ -298,7 +300,7 @@ def pval_correct(pvalue_list):
     return all_cell_pvalue_df
 
 
-file_path = r'I:\position-effect\FINAL\MSB\analysis\software\scCAL\data'
+file_path = r'./data'
 
 # prepare data
 relpace_name_sheet = pd.read_csv(os.path.join(file_path, 'binary_sheet.txt'), sep="\t")

@@ -1,0 +1,150 @@
+Left cell	Right cell	Tissue type of left cell	Tissue type of right cell	Cell lineage distance	CAL divergence	Mean CAL divergence between all intra-tissue cells at the same lineage distance	Differentiated state
+ABalaaaala	ABalaapaaa	Neu	Neu	8	6.44044534	11.88541857	progenitor cell
+ABalaaaalp	ABalaapaap	Neu	Neu	8	7.739707525	11.88541857	progenitor cell
+ABalaaaarl	ABalaaaarr	Neu	Neu	2	5.134234675	5.857715203	progenitor cell
+ABalaaapal	ABalaaappl	Neu	Neu	4	9.210261252	8.336407063	progenitor cell
+ABalaaapar	ABalaaappr	Neu	Neu	4	8.931939755	8.336407063	progenitor cell
+ABalppaapa	ABalaapapa	Dea	Dea	12	7.887892705	10.92238161	completed all embryonic mitosis
+ABalppaapp	ABalaapapp	Neu	Neu	12	8.371239411	12.78935105	progenitor cell
+ABalppaaaa	ABalaappaa	Dea	Dea	12	7.108913748	10.92238161	completed all embryonic mitosis
+ABalppaaap	ABalaappap	Neu	Neu	12	9.173781292	12.78935105	progenitor cell
+ABalapaapa	ABalaapppa	Neu	Neu	10	9.052219606	12.34687583	progenitor cell
+ABalapaapp	ABalaapppp	Neu	Neu	10	9.267563219	12.34687583	progenitor cell
+ABalapaaaa	ABalappapa	Neu	Neu	8	9.453731621	11.88541857	progenitor cell
+ABalapaaap	ABalappapp	Neu	Neu	8	10.63873974	11.88541857	progenitor cell
+ABalapapap	ABalapppap	Neu	Neu	8	12.19351163	11.88541857	progenitor cell
+ABalapappa	ABalappppa	Neu	Neu	8	9.885727617	11.88541857	progenitor cell
+ABalapappp	ABalappppp	Neu	Neu	8	11.07740881	11.88541857	progenitor cell
+ABalpaaaaa	ABarapaaaa	Pha	Pha	14	12.1670777	13.84914694	progenitor cell
+ABalpaaaap	ABarapaaap	Pha	Pha	14	11.17437492	13.84914694	progenitor cell
+ABalpaaapa	ABarapaapa	Pha	Pha	14	16.41191082	13.84914694	progenitor cell
+ABalpaaapp	ABarapaapp	Pha	Pha	14	12.23499699	13.84914694	progenitor cell
+ABalpaapaa	ABaraaapaa	Other	Other	14	10.4740924	NA	progenitor cell
+ABalpaappa	ABaraaappa	Ski	Ski	14	11.54323035	15.65403748	progenitor cell
+ABalpaappp	ABaraaappp	Ski	Ski	14	10.78712611	15.65403748	progenitor cell
+ABalpapaaa	ABarappaaa	Other	Neu	14	7.488728091	NA	progenitor cell
+ABalpapapa	ABarappapa	Neu	Neu	14	7.49970553	13.88212103	progenitor cell
+ABalpapapp	ABarappapp	Neu	Neu	14	7.445385233	13.88212103	progenitor cell
+ABalpappaa	ABarapapaa	Pha	Pha	14	12.0466052	13.84914694	progenitor cell
+ABalpapppa	ABarapappa	Pha	Pha	14	13.10453983	13.84914694	progenitor cell
+ABalpapppp	ABarapappp	Pha	Pha	14	11.17587481	13.84914694	progenitor cell
+ABalppapaa	ABarapppaa	Neu	Neu	14	7.949238082	13.88212103	progenitor cell
+ABalppapap	ABarapppap	Neu	Neu	14	8.394971846	13.88212103	progenitor cell
+ABalppappa	ABarappppa	Neu	Neu	14	7.419633806	13.88212103	progenitor cell
+ABalppappp	ABarappppp	Neu	Neu	14	8.502240302	13.88212103	progenitor cell
+ABalpppaaa	ABpraaaaaa	Neu	Neu	16	9.529061222	15.2593189	progenitor cell
+ABalpppaap	ABpraaaaap	Neu	Neu	16	12.21205211	15.2593189	progenitor cell
+ABalpppapa	ABpraaaapa	Neu	Neu	16	9.667676652	15.2593189	progenitor cell
+ABalpppapp	ABpraaaapp	Neu	Neu	16	10.67819269	15.2593189	progenitor cell
+ABalppppaa	ABpraaapaa	Neu	Neu	16	11.16924029	15.2593189	progenitor cell
+ABalppppap	ABpraaapap	Neu	Neu	16	11.11021357	15.2593189	progenitor cell
+ABalpppppa	ABpraaappa	Neu	Neu	16	11.14999262	15.2593189	progenitor cell
+ABalpppppp	ABpraaappp	Neu	Neu	16	12.09892814	15.2593189	progenitor cell
+ABaraaaaaa	ABaraaaaap	Pha	Pha	2	5.688419971	6.14073633	progenitor cell
+ABaraapaaa	ABaraappaa	Pha	Pha	6	9.32199587	10.82107946	progenitor cell
+ABaraapaap	ABaraappap	Pha	Pha	6	9.199670631	10.82107946	progenitor cell
+ABaraapapa	ABaraapppa	Pha	Pha	6	10.63064756	10.82107946	progenitor cell
+ABaraapapp	ABaraapppp	Pha	Pha	6	7.776576054	10.82107946	progenitor cell
+ABarpaaaap	ABarpaaapa	Neu	Neu	4	11.38573199	8.336407063	progenitor cell
+ABplaaaaaa	ABarpapaaa	Neu	Neu	16	14.50593931	15.2593189	progenitor cell
+ABplaaaaap	ABarpapaap	Neu	Neu	16	13.45572531	15.2593189	progenitor cell
+ABplaaaapa	ABarpapapa	Ski	Ski	16	13.68452107	15.3213125	completed all embryonic mitosis
+ABplaaaapp	ABarpapapp	Ski	Ski	16	10.47219222	15.3213125	completed all embryonic mitosis
+ABplaaapaa	ABarpappaa	Ski	Ski	16	13.74380565	15.3213125	completed all embryonic mitosis
+ABplaaapap	ABarpappap	Ski	Ski	16	9.666478155	15.3213125	completed all embryonic mitosis
+ABplaaappa	ABarpapppa	Ski	Ski	16	12.19687734	15.3213125	completed all embryonic mitosis
+ABplaaappp	ABarpapppp	Ski	Ski	16	11.0064822	15.3213125	completed all embryonic mitosis
+ABarppaaaa	ABarpppaaa	Neu	Neu	8	12.62767761	11.88541857	completed all embryonic mitosis
+ABarppaaap	ABarpppaap	Ski	Ski	8	13.32614784	13.81317417	completed all embryonic mitosis
+ABarppaapa	ABarpppapa	Ski	Ski	8	8.380711583	13.81317417	completed all embryonic mitosis
+ABarppaapp	ABarpppapp	Neu	Neu	8	13.86728865	11.88541857	progenitor cell
+ABarppapaa	ABarppppaa	Ski	Ski	8	10.46384439	13.81317417	completed all embryonic mitosis
+ABarppapap	ABarppppap	Ski	Ski	8	12.35939608	13.81317417	completed all embryonic mitosis
+ABarppappa	ABarpppppa	Ski	Ski	8	10.18458456	13.81317417	completed all embryonic mitosis
+ABarppappp	ABarpppppp	Ski	Ski	8	12.62088235	13.81317417	completed all embryonic mitosis
+ABplaapaaa	ABpraapaaa	Other	Other	14	13.38447074	NA	progenitor cell
+ABplaapaap	ABpraapaap	Neu	Neu	14	11.70833677	13.88212103	progenitor cell
+ABplaapapa	ABpraapapa	Neu	Neu	14	13.45960833	13.88212103	progenitor cell
+ABplaapapp	ABpraapapp	Neu	Neu	14	12.03904766	13.88212103	progenitor cell
+ABplaappaa	ABpraappaa	Ski	Ski	14	15.00496884	15.65403748	completed all embryonic mitosis
+ABplaappap	ABpraappap	Ski	Ski	14	12.58117233	15.65403748	completed all embryonic mitosis
+ABplaapppa	ABpraapppa	Ski	Ski	14	11.44938743	15.65403748	completed all embryonic mitosis
+ABplaapppp	ABpraapppp	Ski	Ski	14	10.8042787	15.65403748	completed all embryonic mitosis
+ABplapaaaa	ABprapaaaa	Neu	Neu	14	8.160370943	13.88212103	progenitor cell
+ABplapaaap	ABprapaaap	Neu	Neu	14	9.53964059	13.88212103	progenitor cell
+ABplapaapp	ABprapaapp	Ski	Ski	14	10.7482549	15.65403748	completed all embryonic mitosis
+ABplapapaa	ABprapapaa	Other	Other	14	11.63515025	NA	progenitor cell
+ABplapapap	ABprapapap	Ski	Ski	14	13.71548329	15.65403748	completed all embryonic mitosis
+ABplapappa	ABprapappa	Ski	Ski	14	15.05882554	15.65403748	completed all embryonic mitosis
+ABplapappp	ABprapappp	Neu	Neu	14	11.63923652	13.88212103	progenitor cell
+ABplappaaa	ABprappaaa	Ski	Ski	14	10.65811171	15.65403748	completed all embryonic mitosis
+ABplappaap	ABprappaap	Ski	Ski	14	11.45916721	15.65403748	completed all embryonic mitosis
+ABplappapa	ABprappapa	Ski	Ski	14	11.95660249	15.65403748	completed all embryonic mitosis
+ABplappapp	ABprappapp	Ski	Ski	14	10.28757359	15.65403748	completed all embryonic mitosis
+ABplapppaa	ABprapppaa	Neu	Neu	14	9.745690109	13.88212103	progenitor cell
+ABplapppap	ABprapppap	Neu	Neu	14	11.05880695	13.88212103	progenitor cell
+ABplappppa	ABprappppa	Ski	Ski	14	10.51609331	15.65403748	completed all embryonic mitosis
+ABplappppp	ABprappppp	Ski	Ski	14	8.910160112	15.65403748	completed all embryonic mitosis
+ABplpaaaaa	ABprpaaaaa	Neu	Neu	14	8.910907085	13.88212103	progenitor cell
+ABplpaaapa	ABprpaaapa	Neu	Neu	14	8.261842415	13.88212103	progenitor cell
+ABplpaaapp	ABprpaaapp	Neu	Neu	14	8.422566144	13.88212103	progenitor cell
+ABplpaapaa	ABprpaapaa	Neu	Neu	14	10.71265779	13.88212103	progenitor cell
+ABplpaapap	ABprpaapap	Neu	Neu	14	10.31618419	13.88212103	progenitor cell
+ABplpaappa	ABprpaappa	Neu	Neu	14	10.00835226	13.88212103	progenitor cell
+ABplpaappp	ABprpaappp	Neu	Neu	14	9.618810546	13.88212103	progenitor cell
+ABplpapaaa	ABprpapaaa	Neu	Neu	14	9.254304166	13.88212103	progenitor cell
+ABplpapaap	ABprpapaap	Neu	Neu	14	9.61841894	13.88212103	progenitor cell
+ABplpapapa	ABprpapapa	Other	Other	14	10.27397359	NA	progenitor cell
+ABplpapapp	ABprpapapp	Neu	Neu	14	9.825193927	13.88212103	progenitor cell
+ABplppaaaa	ABprppaaaa	Neu	Neu	14	8.849365419	13.88212103	progenitor cell
+ABplppaaap	ABprppaaap	Dea	Dea	14	11.57104427	18.76017386	completed all embryonic mitosis
+ABplppaapa	ABprppaapa	Neu	Neu	14	8.620994219	13.88212103	progenitor cell
+ABplppaapp	ABprppaapp	Neu	Neu	14	9.507739643	13.88212103	progenitor cell
+ABplppapaa	ABprppapaa	Neu	Neu	14	9.367887694	13.88212103	progenitor cell
+ABplppappa	ABprppappa	Neu	Neu	14	9.958685192	13.88212103	progenitor cell
+ABplpppaap	ABprpppaap	Neu	Neu	14	7.956978195	13.88212103	progenitor cell
+ABplpppapa	ABprpppapa	Other	Other	14	7.380679386	NA	progenitor cell
+ABplpppapp	ABprpppapp	Dea	Dea	14	6.570737378	18.76017386	completed all embryonic mitosis
+ABplppppaa	ABprppppaa	Other	Other	14	7.845356496	NA	progenitor cell
+ABplpppppp	ABprpppppp	Ski	Ski	14	9.846319568	15.65403748	progenitor cell
+Caaaaa	Cpaaaa	Ski	Ski	10	10.12358131	13.31763361	completed all embryonic mitosis
+Caaaap	Cpaaap	Ski	Ski	10	10.22670097	13.31763361	completed all embryonic mitosis
+Caaapa	Cpaapa	Ski	Ski	10	9.519965265	13.31763361	completed all embryonic mitosis
+Caaapp	Cpaapp	Ski	Ski	10	10.97098359	13.31763361	completed all embryonic mitosis
+Caappd	Cpappd	Ski	Ski	10	12.40435157	13.31763361	completed all embryonic mitosis
+Caappv	Cpappv	Neu	Ski	10	13.76744472	NA	completed all embryonic mitosis
+Capaaa	Cppaaa	Mus	Mus	10	11.68301584	13.44644198	progenitor cell
+Capaap	Cppaap	Mus	Mus	10	13.04326654	13.44644198	progenitor cell
+Capapa	Cppapa	Mus	Mus	10	12.3488745	13.44644198	progenitor cell
+Capapp	Cppapp	Mus	Mus	10	13.1562682	13.44644198	progenitor cell
+Cappaa	Cpppaa	Mus	Mus	10	11.0383733	13.44644198	progenitor cell
+Cappap	Cpppap	Mus	Mus	10	10.9700191	13.44644198	progenitor cell
+Capppa	Cppppa	Mus	Mus	10	14.05990887	13.44644198	progenitor cell
+Capppp	Cppppp	Mus	Mus	10	12.09767854	13.44644198	progenitor cell
+Daaa	Dpaa	Mus	Mus	6	8.086512418	12.0081213	progenitor cell
+Daap	Dpap	Mus	Mus	6	7.648002396	12.0081213	progenitor cell
+Dapa	Dppa	Mus	Mus	6	8.053127677	12.0081213	progenitor cell
+Dapp	Dppp	Mus	Mus	6	7.921474248	12.0081213	progenitor cell
+Ealaa	Earaa	Int	Int	6	8.329069181	10.45154879	progenitor cell
+Ealap	Earap	Int	Int	6	7.208315469	10.45154879	completed all embryonic mitosis
+Ealpa	Earpa	Int	Int	6	9.554930514	10.45154879	completed all embryonic mitosis
+Ealpp	Earpp	Int	Int	6	7.866452048	10.45154879	completed all embryonic mitosis
+Eplaa	Epraa	Int	Int	6	8.194069513	10.45154879	completed all embryonic mitosis
+Eplap	Eprap	Int	Int	6	9.839565927	10.45154879	completed all embryonic mitosis
+Eplpa	Eprpa	Int	Int	6	12.33238016	10.45154879	completed all embryonic mitosis
+Eplpp	Eprpp	Int	Int	6	14.11098505	10.45154879	progenitor cell
+MSaaaaap	MSpaaaap	Pha	Pha	12	11.11158948	9.930625538	progenitor cell
+MSaapaaa	MSpapaaa	Pha	Pha	12	10.30594545	9.930625538	progenitor cell
+MSaapaap	MSpapaap	Pha	Pha	12	9.469024395	9.930625538	progenitor cell
+MSaapapa	MSpapapa	Pha	Pha	12	8.498120501	9.930625538	progenitor cell
+MSaapapp	MSpapapp	Other	Other	12	6.771024821	NA	progenitor cell
+MSaappp	MSpappp	Mus	Mus	10	8.814335207	13.44644198	progenitor cell
+MSapaaaa	MSppaaaa	Other	Other	12	10.62264848	14.10229114	progenitor cell
+MSapaaap	MSppaaap	Mus	Mus	12	9.894498349	14.60093696	completed all embryonic mitosis
+MSapapaa	MSppapaa	Other	Other	12	10.56221617	14.10229114	progenitor cell
+MSapapap	MSppapap	Mus	Mus	12	11.02181739	14.60093696	completed all embryonic mitosis
+MSapappa	MSppappa	Mus	Mus	12	13.01430374	14.60093696	completed all embryonic mitosis
+MSapappp	MSppappp	Mus	Mus	12	9.650694242	14.60093696	completed all embryonic mitosis
+MSappap	MSpppap	Mus	Mus	10	10.15406241	13.44644198	progenitor cell
+MSapppaa	MSppppaa	Mus	Mus	12	11.82366545	14.60093696	completed all embryonic mitosis
+MSapppap	MSppppap	Mus	Mus	12	13.30464519	14.60093696	completed all embryonic mitosis

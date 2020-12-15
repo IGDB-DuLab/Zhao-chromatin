@@ -1,7 +1,6 @@
-
 # -*- coding: utf-8 -*-
 """
-Created on Fri Jul 12 21:40:23 2019
+Created on Fri Sep 12 21:40:23 2019
 
 @author: ZZG
 """
@@ -18,7 +17,7 @@ from scipy.spatial.distance import pdist, squareform
 from matplotlib.colors import LinearSegmentedColormap
 from scipy.cluster.hierarchy import linkage, dendrogram
 
-
+# tranfroming dict to matrix type
 def dict_to_matrix(dict_input):
     
     index_list = []
@@ -75,7 +74,7 @@ def dict_to_matrix(dict_input):
 
     return matrix_pd
     
-
+# acquiring element of each cluster
 def get_cluster_classes(den, label='ivl'):
     cluster_idxs = {}
     for c, pi in zip(den['color_list'], den['icoord']):
@@ -105,7 +104,7 @@ cpal = sns.color_palette("red_white_blue",  n_colors=100)
 
 
 
-file_path = r'I:\position-effect\FINAL\MSB\analysis\software\scCAL\data'
+file_path = r'./data'
 
 
 
@@ -162,8 +161,6 @@ g = sns.clustermap(Chromatin_co_dynamic_divergence, method='average', metric='eu
                   row_cluster=True, col_cluster=True,
                   linewidths=0, xticklabels=False, yticklabels=False,
                   cmap=cpal, robust=True, vmin=bottom10, vmax=top90)
-
-
 
 
 
