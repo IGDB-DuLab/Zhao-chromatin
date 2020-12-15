@@ -67,8 +67,6 @@ def cell_name_transfer(cell_list):
             else:
                 transfer_cell_list = except_cell(cell_list)
 
-                
-            
     else:
         if cell_list[0][0] == "L":
             for i in cell_list:
@@ -348,7 +346,8 @@ output_tissue_pd.columns = ['Tissue', 'cell', 'same', 'diff']
 
 
 
-# plot
+# plot graph
+
 same_f_tissue = output_tissue_pd[['Tissue', 'cell', 'same']]
 same_f_tissue['flag'] = 'same tissue'
 same_f_tissue.columns = ['Tissue', 'cell', 'Chromatin landscape divergence', 'Legend']
@@ -533,7 +532,6 @@ fate_color_dict = {'Neu':'red', 'Pha':'gold', 'Ski':'limegreen', 'Mus':'dodgerbl
 
 for fate_name in fate_list:
 
-    
     fate_cell_list_ = fate_cell_list[fate_name]
     CAL_divergence_pd_ = CAL_divergence_pd.loc[fate_cell_list_][fate_cell_list_]
 
@@ -602,7 +600,7 @@ for fate_name in fate_list:
     ymin = min_mean_ - min_std_ - 2
     ymax = max_mean_ + max_std_ + 2
     
-
+    # plot graph
     mean_IC(data_pd=cell_pair_lineage_distance_and_exp_distance_df, x='Cell lineage distance', y='Chromatin landscape divergence', order = order_list,\
                  hue=None, hue_color=None, IC=0.95, s=15, color=color_fate_, ylim=[0,20], figsize=(5,5), legend=False)
 #    plt.xlim([1, 17])

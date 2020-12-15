@@ -143,6 +143,7 @@ plt.ylabel('Median / Max')
 plt.xlabel('Number of bins')
 plt.subplots_adjust(left=0.185, right=0.975, top=0.915 , bottom=0.165)
 
+
 # Between positions
 simul = []
 for num in [5,10,15,20,25,30,35,40,45,50]:
@@ -272,8 +273,7 @@ output_other_divergence_pd = output_other_divergence_pd[['euclidean']]
 output_other_divergence_pd_mean = output_other_divergence_pd.mean(level=0)
 
 
-
-# plot
+# plot graph
 input_other = output_other_divergence_pd_mean
 input_within = output_corr_pd_mean
 

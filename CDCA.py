@@ -32,10 +32,10 @@ def dict_to_matrix(dict_input):
         index_list = list(set(index_list_tmp))
     
         matrix_list = []
-        for i in columns_list:        #每一行
+        for i in columns_list:        # each row
         
             count_each_columns = []
-            for j in index_list:       #每一列
+            for j in index_list:       # each col
                 if j in dict_input[i].keys():
                     count_each_columns.append(dict_input[i][j])
                 else:
@@ -52,10 +52,10 @@ def dict_to_matrix(dict_input):
         index_list = list(set(index_list_tmp))
         
         matrix_list = []
-        for i in columns_list:        #每一行
+        for i in columns_list:        # each row
         
             count_each_columns = []
-            for j in index_list:       #每一列
+            for j in index_list:       # each col
                 if j in dict_input[i]:
                     count_each_columns.append(1)
                 else:

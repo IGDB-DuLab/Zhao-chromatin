@@ -64,8 +64,6 @@ def cell_name_transfer(cell_list):
                 transfer_cell_list = (cell_name_to_relpace_name_sheet.loc[[cell_list]].values[0])[0]
             else:
                 transfer_cell_list = except_cell(cell_list)
-
-                
             
     else:
         if cell_list[0][0] == "L":

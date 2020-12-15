@@ -115,9 +115,11 @@ symmetry = symmetry[symmetry['Cell lineage distance'].isin(cld_list_filter)]
 
 cld_list_filter.sort()
 
+
+# plot graph
 mean_IC(data_pd=symmetry, x='Cell lineage distance', y='CAL divergence', order = cld_list_filter,\
              hue=None, hue_color=None, IC=0.95, s=15, color='dodgerblue', ylim=[0,20], figsize=(5,5), legend=False)
-#    plt.xlim([1, 17])
+#plt.xlim([1, 17])
 
 
 

@@ -49,9 +49,6 @@ def except_cell(cell_name):
             transform_name += transform[j]
             
     return transform_name
-        
-
-
 
 def cell_name_transfer(cell_list):
     
@@ -70,9 +67,7 @@ def cell_name_transfer(cell_list):
                 transfer_cell_list = (cell_name_to_relpace_name_sheet.loc[[cell_list]].values[0])[0]
             else:
                 transfer_cell_list = except_cell(cell_list)
-
                 
-            
     else:
         if cell_list[0][0] == "L":
             for i in cell_list:
@@ -98,8 +93,6 @@ def cell_lineage_distance(cell_1, cell_2):
     else:
         cell_1 = cell_name_transfer(cell_1)
         cell_2 = cell_name_transfer(cell_2)
-    
-    
     
     cell_1_list = list(cell_1)
     cell_2_list = list(cell_2)
@@ -320,7 +313,7 @@ cell_pair_lineage_distance_and_divergence_pd = cell_pair_lineage_distance_and_di
 #cell_pair_lineage_distance_and_divergence_pd['Chromatin landscape divergence'].mean()
 
 
-# plot
+# plot graph
 plt.rcParams['xtick.major.pad'] = 2
 plt.rcParams["errorbar.capsize"] = 5
 plt.rcParams["font.family"] = "arial"
@@ -443,7 +436,6 @@ for cell in all_cell_list_replace:
         
         diff_fate = 1-fate_similarity_change_index.loc[child_1][child_2]
         
-        
         intra1_ = list(combinations(child_1_list, 2))
         intra2_ = list(combinations(child_2_list, 2))
         inter_ = list(product(child_1_list, child_2_list))
@@ -489,7 +481,7 @@ other_cell = list(set(all_cell_stats_pvalue_df['cell_name']) -set(sig_cell))
 
 len(sig_cell)
 
-
+# plot graph
 pearsonr(all_cell_stats_pvalue_df['Fate divergence'], all_cell_stats_pvalue_df['Transition score of CAL'])
 sns.regplot(x='Transition score of CAL', y='Fate divergence',data = all_cell_stats_pvalue_df, color='dodgerblue')
 plt.xlim(0.65,1.65)
