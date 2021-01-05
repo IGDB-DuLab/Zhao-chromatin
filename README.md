@@ -1,4 +1,4 @@
-# Mapping Chromatin activity landscape during *C. elegans* embryogenesis at Single-cell resolution
+# Mapping chromatin activity landscape during *C. elegans* embryogenesis at single-cell resolution
 
 This repository provides the source code for reproducing the results of the study titled " Chromatin dynamics during *C. elegans* embryogenesis at the single-cell level" by Zhiguang Zhao# , Rong Fan# , Weina Xu, Yangyang Wang, Xuehua Ma, and Zhuo Du*.
 
