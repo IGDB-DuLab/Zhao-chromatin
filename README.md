@@ -1,15 +1,15 @@
-# Single-cell Chromatin Acitivity Landscape Analysis
+# Mapping Chromatin activity landscape during *C. elegans* embryogenesis at Single-cell resolution
 
-This repository contains the source code for reproducing the analyses of our study titled "Multidimensional Chromatin-based Regulation of *C. elegans* Embryogenesis" by Zhiguang Zhao# , Rong Fan# , Weina Xu, Yangyang Wang, Xuehua Ma, and Zhuo Du* 
+This repository provides the source code for reproducing the results of the study titled " Chromatin dynamics during *C. elegans* embryogenesis at the single-cell level" by Zhiguang Zhao# , Rong Fan# , Weina Xu, Yangyang Wang, Xuehua Ma, and Zhuo Du*.
 
 ## Description of files
-- [fluorescent_compensation.py](https://github.com/genetics-dulab/scCAL/blob/main/fluorescent_compensation.py)  Compensation for depth-dependent attenuation of fluorescence intensity
-- [data_stats.py](https://github.com/genetics-dulab/scCAL/blob/main/data_stats.py) Calculation of data distribution, CV, infomation content and variability.
-- [CAL_lineage.py](https://github.com/genetics-dulab/scCAL/blob/main/CAL_lineage.py) Performing analyses related to lineage fate patterning and anterior-posterior fate asymmetry of CALs .
-- [CAL_tissue.py](https://github.com/genetics-dulab/scCAL/blob/main/CAL_tissue.py) Performing analyses related to tissue convergence and tissue heterogeneity .
-- [CAL_symmetry.py](https://github.com/genetics-dulab/scCAL/blob/main/CAL_symmetry.py) Performing analyses related to symmetry predetermination.
+- [fluorescent_compensation.py](https://github.com/genetics-dulab/scCAL/blob/main/fluorescent_compensation.py)  Compensation for depth-dependent attenuation of fluorescence intensity during 3D live-cell imaging.
+- [data_stats.py](https://github.com/genetics-dulab/scCAL/blob/main/data_stats.py) Calculating the genomic and cellular distribution, coefficient of variation, the information content of GFP expression integrated into different genomic positions.
+- [CAL_lineage.py](https://github.com/genetics-dulab/scCAL/blob/main/CAL_lineage.py) Performing analyses related to lineage-dependent changes in chromatin activity landscape.
+- [CAL_tissue.py](https://github.com/genetics-dulab/scCAL/blob/main/CAL_tissue.py) Performing analyses related to tissue-based convergence and lineage-dependent heterogeneity in chromatin landscape within the same tissue type.
+- [CAL_symmetry.py](https://github.com/genetics-dulab/scCAL/blob/main/CAL_symmetry.py) Performing analyses related to chromatin landscape divergences between left-right symmetry cells and their progenitor cells. 
 - [CDCA.py](https://github.com/genetics-dulab/scCAL/blob/main/CDCA.py) Performing analyses related to chromatin co-dynamic region.
-- [data](https://github.com/genetics-dulab/scCAL/blob/main/data) folder contains the raw data needed for various analysis.
+- [data](https://github.com/genetics-dulab/scCAL/blob/main/data) folder contains the raw data needed for various analyses.
 
 ## Prerequisites
 All the dependencies are listed in [requirements.txt](https://github.com/genetics-dulab/scCAL/blob/main/requirements.txt). 
